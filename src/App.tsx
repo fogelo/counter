@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import {Button} from './components/Button';
+import {Display} from './components/Display';
 
 function App() {
     const [value, setValue] = useState(0)
@@ -18,8 +19,7 @@ function App() {
         <div className="App">
             <div className={'counter'}>
 
-                <div className={`value ${value === MAX_VALUE ? 'maxValue' : ''}`}>
-                    {value}</div>
+                <Display className={`value ${value === MAX_VALUE ? 'maxValue' : ''}`} value={value}/>
 
                 <div className={'buttons'}>
                     <Button className={'button'} onClick={increment} name={'inc'} disabled={value === MAX_VALUE}/>
