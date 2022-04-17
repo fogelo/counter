@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
+import {Button} from './components/Button';
 
 function App() {
     const [value, setValue] = useState(0)
@@ -16,20 +17,13 @@ function App() {
     return (
         <div className="App">
             <div className={'counter'}>
-                <div className={`value ${value === MAX_VALUE ? 'maxValue' : ''}`}>{value}</div>
+
+                <div className={`value ${value === MAX_VALUE ? 'maxValue' : ''}`}>
+                    {value}</div>
+
                 <div className={'buttons'}>
-                    <button className={'button'}
-                            onClick={increment}
-                            disabled={value === MAX_VALUE}
-                    >
-                        inc
-                    </button>
-                    <button className={'button'}
-                            onClick={reset}
-                            disabled={value === 0}
-                    >
-                        reset
-                    </button>
+                    <Button className={'button'} onClick={increment} name={'inc'} disabled={value === MAX_VALUE}/>
+                    <Button className={'button'} onClick={reset} name={'reset'} disabled={value === 0}/>
                 </div>
             </div>
         </div>
