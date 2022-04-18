@@ -1,0 +1,10 @@
+.errorMessage {
+    color: #954242;
+    font-weight: bold;
+    font-size: 22px;
+}
+.infoMessage {
+    color: #cdcdcd;
+    font-weight: bold;
+    font-size: 22px;
+}

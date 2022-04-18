@@ -7,10 +7,11 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
-.counter {
+
+.container {
     border: 3px solid;
     min-width: 300px;
     min-height: 200px;
@@ -19,6 +20,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
 }
+
 
 .value {
     font-size: 40px;
@@ -40,4 +42,8 @@ body {
 .button {
     min-width: 100px;
     height: 30px;
+}
+
+.inputError {
+    outline: 1px solid red;
 }
