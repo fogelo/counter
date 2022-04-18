@@ -51,7 +51,7 @@ function App() {
                     <span>max value: </span>
                     <input type="number"
                            value={maxValue}
-                           className={startValue >= maxValue ? 'inputError' : ''}
+                           className={startValue >= maxValue || startValue < 0 || maxValue < 0 ? 'inputError' : ''}
                            onFocus={() => setSettingMode(true)}
                            onChange={onMaxValueChangeHandler}
                     />
@@ -60,7 +60,7 @@ function App() {
                     <span>start value: </span>
                     <input type="number"
                            value={startValue}
-                           className={startValue >= maxValue ? 'inputError' : ''}
+                           className={startValue >= maxValue || startValue < 0 || maxValue < 0 ? 'inputError' : ''}
                            onFocus={() => setSettingMode(true)}
                            onChange={onStartValueChangeHandler}
                     />
