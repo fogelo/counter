@@ -44,47 +44,55 @@ function App() {
         setStartValue(+e.currentTarget.value)
     }
 
+    const activeSettingMode = () => {
+        setSettingMode(true)
+    }
+
     return (
         <div className="App">
-            <div className={'container'}>
-                <div>
-                    <span>max value: </span>
-                    <input type="number"
-                           value={maxValue}
-                           className={startValue >= maxValue || startValue < 0 || maxValue < 0 ? 'inputError' : ''}
-                           onFocus={() => setSettingMode(true)}
-                           onChange={onMaxValueChangeHandler}
-                    />
-                </div>
-                <div>
-                    <span>start value: </span>
-                    <input type="number"
-                           value={startValue}
-                           className={startValue >= maxValue || startValue < 0 || maxValue < 0 ? 'inputError' : ''}
-                           onFocus={() => setSettingMode(true)}
-                           onChange={onStartValueChangeHandler}
-                    />
-                </div>
+            {
+                settingMode
+                    ? <div className={'container'}>
+                        <div>
+                            <span>max value: </span>
+                            <input type="number"
+                                   value={maxValue}
+                                   className={startValue >= maxValue || startValue < 0 || maxValue < 0 ? 'inputError' : ''}
+                                   onFocus={() => setSettingMode(true)}
+                                   onChange={onMaxValueChangeHandler}
+                            />
+                        </div>
+                        <div>
+                            <span>start value: </span>
+                            <input type="number"
+                                   value={startValue}
+                                   className={startValue >= maxValue || startValue < 0 || maxValue < 0 ? 'inputError' : ''}
+                                   onFocus={() => setSettingMode(true)}
+                                   onChange={onStartValueChangeHandler}
+                            />
+                        </div>
 
-                <Button className={'button'}
-                        onClick={setValues}
-                        name={'set'}
-                        disabled={!settingMode || startValue >= maxValue}/>
-            </div>
+                        <Button className={'button'}
+                                onClick={setValues}
+                                name={'set'}
+                                disabled={!settingMode || startValue >= maxValue || startValue < 0 || maxValue < 0}/>
+                    </div>
+                    : <div className={'container'}>
+                        <Display className={`value ${value === maxValue ? 'maxValue' : ''}`}
+                                 value={value}
+                                 settingMode={settingMode}
+                                 error={startValue >= maxValue}
+                        />
 
-            <div className={'container'}>
-                <Display className={`value ${value === maxValue ? 'maxValue' : ''}`}
-                         value={value}
-                         settingMode={settingMode}
-                         error={startValue >= maxValue}
-                />
-
-                <div className={'buttons'}>
-                    <Button className={'button'} onClick={increment} name={'inc'}
-                            disabled={settingMode || value === maxValue}/>
-                    <Button className={'button'} onClick={reset} name={'reset'} disabled={settingMode || value === 0}/>
-                </div>
-            </div>
+                        <div className={'buttons'}>
+                            <Button className={'button'} onClick={increment} name={'inc'}
+                                    disabled={settingMode || value === maxValue}/>
+                            <Button className={'button'} onClick={reset} name={'reset'}
+                                    disabled={settingMode || value === 0}/>
+                        </div>
+                        <Button className={'button'} onClick={activeSettingMode} name={'set'}/>
+                    </div>
+            }
         </div>
     );
 }

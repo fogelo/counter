@@ -2,7 +2,7 @@ type ButtonPropsType = {
     className: string
     onClick: () => void
     name: string
-    disabled: boolean
+    disabled?: boolean
 }
 
 export const Button = (props: ButtonPropsType) => {
